@@ -1,0 +1,13 @@
+import pandas as pd
+
+from sklearn.cross_validation import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
+def loadData(datafile):
+    with open(datafile, 'r') as csvfile:
+        data = pd.read_csv(csvfile)
+        
+    #Inspect the data
+    print(data.columns.values)
+    
+    return data
