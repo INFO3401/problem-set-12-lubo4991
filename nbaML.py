@@ -25,7 +25,7 @@ def loadData(datafile):
 #PROBLEM 2: Update your k-NN code such that your runKNN function takes an additional parameter standing for the number of neighbors to consider and uses this parameter to perform a classification. 
 
 
-def runKNN(dataset, prediction, ignore):
+def runKNN(dataset, prediction, ignore, neighbor):
 #Set up our dataset
     
     X = dataset.drop(columns=[prediction, ignore])
@@ -33,7 +33,7 @@ def runKNN(dataset, prediction, ignore):
     
     # SPlit the data into training and testing set
     
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=1, stratify=Y)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=1, stratify=Y)
     
     #run K-NN algorithm
     knn = KNeighborsClassifier(n_neighbors=5)
