@@ -1,3 +1,6 @@
+#Lucas Bouchard
+#Problem Set 12
+
 import pandas as pd
 import seaborn as sns
 
@@ -5,6 +8,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import KMeans
 
+
+
+
+#PROBLEM 1: Classify a player's position using k-NN and the provided classification data. 
 
 def loadData(datafile):
     with open(datafile, 'r') as csvfile:
@@ -14,6 +21,9 @@ def loadData(datafile):
     print(data.columns.values)
     
     return data
+
+#PROBLEM 2: Update your k-NN code such that your runKNN function takes an additional parameter standing for the number of neighbors to consider and uses this parameter to perform a classification. 
+
 
 def runKNN(dataset, prediction, ignore):
 #Set up our dataset
@@ -57,9 +67,9 @@ def runKMeans(dataset, ignore):
     #Add the predtions to the dataframe
     dataset['cluster'] = pd.Series(kmeans.predict(X), index=dataset.index)
     #Print a scatterplot matrix
-    scatterMatrix = sns.pairplot(dataset.drop(columns=ignore), hue='cluster', palette='Set2')
+    #scatterMatrix = #sns.pairplot(dataset.drop(columns=ignore), hue='cluster', palette='Set2')
     
-    scatterMatrix.savefig("kmeansCluster.png")
+    #scatterMatrix.savefig("kmeansCluster.png")
     
     return kmeans
     
@@ -74,5 +84,5 @@ nbaData=loadData("nba_2013_clean.csv")
 knnModel = runKNN(nbaData, "pos", "player")
 classifyPlayer(nbaData.loc[nbaData['player']=='Kobe Bryant'], nbaData, knnModel, 'pos', 'player')
 
-kmeansModel = runKMeans(nbaData, ['pos', 'player'])
+meansModel = runKMeans(nbaData, ['pos', 'player'])
 
